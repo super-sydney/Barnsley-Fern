@@ -1,7 +1,7 @@
 var x = 0, y = 0, xNext, yNext, r, tmp, tmp2;
 
 function setup(){
-	createCanvas(900, 900);
+	createCanvas(window.innerWidth, window.innerHeight);
 	background(0);
 }
 
@@ -12,7 +12,8 @@ var vars = {
 	d: [0.16, 	0.85, 	0.22, 	0.24],
 	f: [0, 		1.6, 	1.6, 	0.44],
 	p: [0.01, 	0.85, 	0.07, 	0.07]
-};
+},
+varsDefault = JSON.parse(JSON.stringify(vars));
 
 const getEl = function(val){return document.getElementById(val)};
 
@@ -21,7 +22,7 @@ const getEl = function(val){return document.getElementById(val)};
 function draw(){
 	updateVals();
 
-	for (var i = 0; i < 10000; i++){
+	for (var i = 0; i < 20000; i++){
 
 		r = random();
 
@@ -64,14 +65,57 @@ function updateVals(){
 	if (!aCurrent.every((val, ind) => (val === aUser[ind]))){
 		background(0);
 		vars.a = aUser;
-	}else if (!bCurrent.every((val, ind) => (val === bUser[ind]))){
+	}
+	if (!bCurrent.every((val, ind) => (val === bUser[ind]))){
 		background(0);
 		vars.b = bUser;
-	}else if (!cCurrent.every((val, ind) => (val === cUser[ind]))){
+	}
+	if (!cCurrent.every((val, ind) => (val === cUser[ind]))){
 		background(0);
 		vars.c = cUser;
-	}else if (!dCurrent.every((val, ind) => (val === dUser[ind]))){
+	}
+	if (!dCurrent.every((val, ind) => (val === dUser[ind]))){
 		background(0);
 		vars.d = dUser;
 	}
+}
+
+function resetSlider(){
+	var elements = document.getElementsByTagName("input");
+
+	var letter = 0, counter = 0;
+
+	for (var i = 0; i < elements.length; i++){
+
+		if (letter === 0){
+			elements[i].value = varsDefault.a[counter];
+		}else if (letter === 1){
+			elements[i].value = varsDefault.b[counter];
+		}else if (letter === 2){
+			elements[i].value = varsDefault.c[counter];
+		}else if (letter === 3){
+			elements[i].value = varsDefault.d[counter];
+		}
+
+		if (letter === 3){
+			letter = 0;
+			counter++;
+		}else{
+			letter++;
+		}
+
+
+		document.getElementById(elements[i].id + "Display").innerHTML = elements[i].value;
+	}
+
+	updateVals();
+}
+
+function updateSlider(){
+	document.getElementById(this.id + "Display").innerHTML = this.value;
+}
+
+for (var element of document.getElementsByTagName("input")){
+	element.addEventListener("mousemove", updateSlider);
+	document.getElementById(element.id + "Display").innerHTML = element.value;
 }

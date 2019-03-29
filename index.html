@@ -4,25 +4,34 @@
 	<title>Fractals</title>
 </head>
 <body>
-
-
+	<style type="text/css">
+		span{
+			display: inline-block;
+			width: 140px;
+		}
+	</style>
+	<span id="a0Display"></span><span id="b0Display"></span><span id="c0Display"></span><span id="d0Display"></span><br>
 	<input type="range" id="a0" min="-1" max="1" step="0.01" value="0">
 	<input type="range" id="b0" min="-1" max="1" step="0.01" value="0">
 	<input type="range" id="c0" min="-1" max="1" step="0.01" value="0">
 	<input type="range" id="d0" min="-1" max="1" step="0.01" value="0.16"><br>
+	<span id="a1Display"></span><span id="b1Display"></span><span id="c1Display"></span><span id="d1Display"></span><br>
 	<input type="range" id="a1" min="-1" max="1" step="0.01" value="0.85">
 	<input type="range" id="b1" min="-1" max="1" step="0.01" value="0.04">
 	<input type="range" id="c1" min="-1" max="1" step="0.01" value="-0.04">
 	<input type="range" id="d1" min="-1" max="1" step="0.01" value="0.85"><br>
+	<span id="a2Display"></span><span id="b2Display"></span><span id="c2Display"></span><span id="d2Display"></span><br>
 	<input type="range" id="a2" min="-1" max="1" step="0.01" value="0.2">
 	<input type="range" id="b2" min="-1" max="1" step="0.01" value="-0.26">
 	<input type="range" id="c2" min="-1" max="1" step="0.01" value="0.23">
 	<input type="range" id="d2" min="-1" max="1" step="0.01" value="0.22"><br>
+	<span id="a3Display"></span><span id="b3Display"></span><span id="c3Display"></span><span id="d3Display"></span><br>
 	<input type="range" id="a3" min="-1" max="1" step="0.01" value="-0.15">
 	<input type="range" id="b3" min="-1" max="1" step="0.01" value="0.28">
 	<input type="range" id="c3" min="-1" max="1" step="0.01" value="0.26">
 	<input type="range" id="d3" min="-1" max="1" step="0.01" value="0.24">
 
+	<button onclick="resetSlider()">Reset Sliders</button>
 
 	<script type="text/javascript" src="p5.min.js"></script>
 	<script type="text/javascript" src="fractals.js"></script>
